@@ -1,13 +1,25 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+const morgan = require("morgan");
+const helmet = require("helmet");
 const Joi = require("@hapi/joi");
+const logger = require("./logger");
+const auth = require("./auth");
+const express = require("express");
 const app = express();
 
-// parse application/x-www-form-urlencoded
-// app.use(bodyParser.urlencoded({ extended: false }));
+// parse json in req and populate req.body
+app.use(express.json());
+// parse web form body key1=value1&key2=value2... and populate req.body
+app.use(express.urlencoded({ extended: true }));
+// give access to static assets from url (e.g. localhost:3000/readme.txt)
+app.use(express.static("public"));
+// helmet to help set some HTTP response headers
+app.use(helmet());
+// use morgan as logger
+app.use(morgan("tiny"));
 
-// parse application/json
-app.use(bodyParser.json());
+app.use(logger);
+
+app.use(auth);
 
 const genres = [
   { id: 1, name: "Action" },
