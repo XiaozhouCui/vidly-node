@@ -1,3 +1,4 @@
+const config = require("config");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const Joi = require("@hapi/joi");
@@ -5,6 +6,10 @@ const logger = require("./logger");
 const auth = require("./auth");
 const express = require("express");
 const app = express();
+
+// console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
+// console.log(`Password: ${process.env.app_password}`);
+// console.log(`app: ${app.get("env")}`);
 
 // parse json in req and populate req.body
 app.use(express.json());
@@ -14,8 +19,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 // helmet to help set some HTTP response headers
 app.use(helmet());
+
+// Configuration
+console.log("Application Name: " + config.get("name"));
+console.log("Mail Server: " + config.get("mail.host"));
+console.log("Mail Password: " + config.get("mail.password"));
+
 // use morgan as logger
-app.use(morgan("tiny"));
+if (app.get("env") === "development") {
+  app.use(morgan("tiny"));
+  console.log("Morgan enabled...");
+}
 
 app.use(logger);
 
