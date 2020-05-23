@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const logger = require("./middleware/logger");
 const auth = require("./middleware/auth");
 const genres = require("./routes/genres");
+const customers = require("./routes/customers");
 const home = require("./routes/home");
 const mongoose = require("mongoose");
 const express = require("express");
@@ -15,6 +16,7 @@ mongoose
   .connect("mongodb://localhost/vidly", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+    useFindAndModify: false,
   })
   .then(() => console.log("Connected to MongoDB..."))
   .catch((err) => console.error("Could not connect to MongoDB...", err));
@@ -32,6 +34,7 @@ app.use(express.static("public"));
 app.use(helmet());
 
 app.use("/api/genres", genres);
+app.use("/api/customers", customers);
 app.use("/", home);
 
 // Configuration
