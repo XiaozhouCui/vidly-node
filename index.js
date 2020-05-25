@@ -1,3 +1,5 @@
+const Joi = require("@hapi/joi");
+Joi.objectId = require("joi-objectid")(Joi);
 const startupDebugger = require("debug")("app:startup");
 const dbDebugger = require("debug")("app:db");
 const config = require("config");

@@ -35,7 +35,7 @@ function validateMovie(movie) {
   // Joi schema is what clients send us
   const schema = Joi.object({
     title: Joi.string().min(3).max(255).required(),
-    genreId: Joi.string().required(), // client will only send genre ID, selected from a dropdown menu
+    genreId: Joi.objectId().required(), // client will only send genre ID, selected from a dropdown menu
     numberInStock: Joi.number().min(0).max(255).required(),
     dailyRentalRate: Joi.number().min(0).max(255).required(),
   });
