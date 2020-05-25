@@ -8,6 +8,7 @@ const auth = require("./middleware/auth");
 const genres = require("./routes/genres");
 const customers = require("./routes/customers");
 const movies = require("./routes/movies");
+const rentals = require("./routes/rentals");
 const home = require("./routes/home");
 const mongoose = require("mongoose");
 const express = require("express");
@@ -37,6 +38,7 @@ app.use(helmet());
 app.use("/api/genres", genres);
 app.use("/api/customers", customers);
 app.use("/api/movies", movies);
+app.use("/api/rentals", rentals);
 app.use("/", home);
 
 // Configuration
