@@ -1,30 +1,39 @@
 const Joi = require("@hapi/joi");
 const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+const config = require("config");
 
-const User = mongoose.model(
-  "User",
-  new mongoose.Schema({
-    name: {
-      type: String,
-      required: true,
-      minlength: 3,
-      maxlength: 50,
-    },
-    email: {
-      type: String,
-      required: true,
-      minlength: 3,
-      maxlength: 255,
-      unique: true, // email must be unique
-    },
-    password: {
-      type: String,
-      required: true,
-      minlength: 5,
-      maxlength: 1024, // for hashed password
-    },
-  })
-);
+const userSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 50,
+  },
+  email: {
+    type: String,
+    required: true,
+    minlength: 3,
+    maxlength: 255,
+    unique: true, // email must be unique
+  },
+  password: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlength: 1024, // for hashed password
+  },
+});
+
+// Schema.methods returns an object, it allows us to add a method to a schema
+userSchema.methods.generateAuthToken = function () {
+  // sign the jwt with user._id as payload, and an envirnoment variable as private key
+  // no arrow function, "this" refers to the user instance generated from this Schema
+  const token = jwt.sign({ _id: this._id }, config.get("jwtPrivateKey")); // private stored in env "vidly_jwtPrivateKey"
+  return token;
+};
+
+const User = mongoose.model("User", userSchema);
 
 function validateUser(user) {
   const schema = Joi.object({

@@ -17,6 +17,10 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 
+if (!config.get("jwtPrivateKey")) {
+  console.log("FATAL ERROR: jwtPrivateKey is not defined.");
+  process.exit(1);
+}
 mongoose
   .connect("mongodb://localhost/vidly", {
     useNewUrlParser: true,
@@ -50,6 +54,7 @@ app.use("/", home);
 // Configuration
 // need to run in terminal: set NODE_ENV=development (or production)
 // need to run in terminal: set app_password=1234
+// need to run in terminal: set vidly_jwtPrivateKey=asdf
 console.log("Application Name: " + config.get("name"));
 console.log("Mail Server: " + config.get("mail.host"));
 console.log("Mail Password: " + config.get("mail.password"));
