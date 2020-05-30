@@ -1,3 +1,4 @@
+const auth = require("../middleware/auth"); // authorisation
 const { User, validate } = require("../models/user");
 const mongoose = require("mongoose");
 const _ = require("lodash");
@@ -5,6 +6,14 @@ const bcrypt = require("bcrypt");
 const express = require("express");
 const router = express.Router();
 
+// get the current user, can't user "/:id", because a user can see the details of other users by sending id
+// auth middleware makes sure that only authorised user can get to this route handler
+router.get("/me", auth, async (req, res) => {
+  const user = await User.findById(req.user._id).select("-password"); // exclude the hashed password
+  res.send(user);
+});
+
+// register a new user
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);

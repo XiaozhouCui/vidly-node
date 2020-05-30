@@ -51,15 +51,16 @@ app.use("/api/users", users);
 app.use("/api/auth", auth);
 app.use("/", home);
 
-// Configuration
+//"config/custom-environment-variables.json" will map config settings to environment variables
 // need to run in terminal: set NODE_ENV=development (or production)
 // need to run in terminal: set app_password=1234
-// need to run in terminal: set vidly_jwtPrivateKey=asdf
+// need to run in terminal: set pk=1234
 console.log("Application Name: " + config.get("name"));
 console.log("Mail Server: " + config.get("mail.host"));
-console.log("Mail Password: " + config.get("mail.password"));
+// console.log("Mail Password: " + config.get("mail.password"));
 console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
-console.log(`Password: ${process.env.app_password}`);
+console.log(`Mail Host Password: ${process.env.app_password}`);
+console.log(`JWT Private Key: ${process.env.pk}`);
 console.log(`app: ${app.get("env")}`);
 
 // use morgan as logger

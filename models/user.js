@@ -23,13 +23,19 @@ const userSchema = new mongoose.Schema({
     minlength: 5,
     maxlength: 1024, // for hashed password
   },
+  isAdmin: Boolean,
+  // roles: ['moderator', 'guest'],
+  // operations: ['deleteGenres', 'createGenres'],
 });
 
 // Schema.methods returns an object, it allows us to add a method to a schema
 userSchema.methods.generateAuthToken = function () {
   // sign the jwt with user._id as payload, and an envirnoment variable as private key
   // no arrow function, "this" refers to the user instance generated from this Schema
-  const token = jwt.sign({ _id: this._id }, config.get("jwtPrivateKey")); // private stored in env "vidly_jwtPrivateKey"
+  const token = jwt.sign(
+    { _id: this._id, isAdmin: this.isAdmin },
+    config.get("jwtPrivateKey")
+  ); // private stored in env "vidly_jwtPrivateKey"
   return token;
 };
 

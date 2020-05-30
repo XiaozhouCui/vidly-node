@@ -6,6 +6,7 @@ const bcrypt = require("bcrypt");
 const express = require("express");
 const router = express.Router();
 
+// User login
 router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
@@ -19,6 +20,9 @@ router.post("/", async (req, res) => {
   const token = user.generateAuthToken();
   res.send(token);
 });
+
+// User logout
+// Only happen on client side, by deleting the token from local storage
 
 function validate(req) {
   const schema = Joi.object({
