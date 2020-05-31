@@ -20,10 +20,22 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 
-// handle uncaught exceptions outside of Express
-process.on("uncaughtException", (ex) => {
-  console.log("WE GOT AN UNCAUGHT EXCEPTION");
-  winston.error(ex.message, ex);
+// // handle uncaught synchronous exceptions outside of Express
+// process.on("uncaughtException", (ex) => {
+//   winston.error(ex.message, ex);
+//   process.exit(1);
+// });
+
+// alternative way of handling uncaught synchronous exceptions outside of Express
+winston.handleExceptions(
+  new winston.transports.File({ filename: "uncaughtExceptions.log" })
+);
+
+// handle uncaught promise rejections outside of Express
+process.on("unhandledRejection", (ex) => {
+  // winston.error(ex.message, ex);
+  // process.exit(1);
+  throw ex;
 });
 
 // via error middleware, log errors into "logfile.log"
@@ -34,7 +46,9 @@ winston.add(winston.transports.MongoDB, {
   level: "error", // only "error" level will be logged
 });
 
-throw new Error("Something failed during startup.");
+// throw new Error("Something failed suring startup.");
+const p = Promise.reject(new Error("Something failed miserably!"));
+p.then(() => console.log("Done"));
 
 if (!config.get("jwtPrivateKey")) {
   console.log("FATAL ERROR: jwtPrivateKey is not defined.");
