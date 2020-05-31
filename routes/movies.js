@@ -1,5 +1,7 @@
 const { Movie, validate } = require("../models/movie");
 const { Genre } = require("../models/genre");
+const auth = require("../middleware/auth");
+const admin = require("../middleware/admin");
 const mongoose = require("mongoose");
 const express = require("express");
 const router = express.Router();
@@ -10,7 +12,7 @@ router.get("/", async (req, res) => {
 });
 
 // post embeded document, referencing genre ID in Genre collection
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
   // genre ID is in request body, find this ID in genre collection
@@ -37,7 +39,7 @@ router.get("/:id", async (req, res) => {
   res.send(movie);
 });
 
-router.put("/:id", async (req, res) => {
+router.put("/:id", auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
@@ -61,7 +63,7 @@ router.put("/:id", async (req, res) => {
   res.send(movie);
 });
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", [auth, admin], async (req, res) => {
   const movie = await Movie.findByIdAndRemove(req.params.id);
   if (!movie)
     return res.status(404).send("The movie with the given ID was not found.");

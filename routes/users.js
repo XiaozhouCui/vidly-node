@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const express = require("express");
 const router = express.Router();
 
-// get the current user, can't user "/:id", because a user can see the details of other users by sending id
+// get the current user, can't use "/:id", because a user can see the details of other users by sending id
 // auth middleware makes sure that only authorised user can get to this route handler
 router.get("/me", auth, async (req, res) => {
   const user = await User.findById(req.user._id).select("-password"); // exclude the hashed password
