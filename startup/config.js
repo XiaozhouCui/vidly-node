@@ -14,6 +14,7 @@ module.exports = function (app) {
   // console.log("Mail Password: " + config.get("mail.password"));
   console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
   console.log(`Mail Host Password: ${process.env.app_password}`);
-  console.log(`JWT Private Key: ${process.env.pk}`);
+  console.log(`Custom JWT Private Key: ${process.env.pk}`);
+  console.log(`Default JWT Private Key: ${config.get("jwtPrivateKey")}`);
   console.log(`app: ${app.get("env")}`);
 };

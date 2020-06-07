@@ -96,3 +96,26 @@
 {"level":"info","message":"Connected to mongodb://localhost/vidly_tests...","timestamp":"2020-06-06T07:53:57.988Z"}
 {"level":"info","message":"Listening to port 3000...","timestamp":"2020-06-06T07:54:37.316Z"}
 {"level":"info","message":"Connected to mongodb://localhost/vidly_tests...","timestamp":"2020-06-06T07:54:37.332Z"}
+{"level":"info","message":"Listening to port 3000...","timestamp":"2020-06-07T00:23:33.993Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly_tests...","timestamp":"2020-06-07T00:23:34.012Z"}
+{"level":"info","message":"Listening to port 3000...","timestamp":"2020-06-07T00:30:36.354Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly_tests...","timestamp":"2020-06-07T00:30:36.369Z"}
+{"level":"info","message":"Listening to port 3000...","timestamp":"2020-06-07T00:34:24.949Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly_tests...","timestamp":"2020-06-07T00:34:24.964Z"}
+{"level":"info","message":"Listening to port 3000...","timestamp":"2020-06-07T00:35:46.013Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly_tests...","timestamp":"2020-06-07T00:35:46.028Z"}
+{"level":"info","message":"Listening to port 3000...","timestamp":"2020-06-07T00:35:57.029Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly_tests...","timestamp":"2020-06-07T00:35:57.043Z"}
+{"level":"info","message":"Listening to port 3000...","timestamp":"2020-06-07T00:38:28.252Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly_tests...","timestamp":"2020-06-07T00:38:28.268Z"}
+{"level":"info","message":"Listening to port 3000...","timestamp":"2020-06-07T00:40:32.135Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly_tests...","timestamp":"2020-06-07T00:40:32.151Z"}
+{"message":"Genre validation failed: name: Path `name` (`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`) is longer than the maximum allowed length (50).","errors":{"name":{"message":"Path `name` (`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`) is longer than the maximum allowed length (50).","name":"ValidatorError","properties":{"message":"Path `name` (`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`) is longer than the maximum allowed length (50).","type":"maxlength","maxlength":50,"path":"name","value":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},"kind":"maxlength","path":"name","value":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"}},"_message":"Genre validation failed","stack":"ValidationError: Genre validation failed: name: Path `name` (`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`) is longer than the maximum allowed length (50).\n    at new ValidationError (C:\\Learning\\vidly-node\\node_modules\\mongoose\\lib\\error\\validation.js:31:11)\n    at model.Document.invalidate (C:\\Learning\\vidly-node\\node_modules\\mongoose\\lib\\document.js:2563:32)\n    at C:\\Learning\\vidly-node\\node_modules\\mongoose\\lib\\document.js:2385:17\n    at C:\\Learning\\vidly-node\\node_modules\\mongoose\\lib\\schematype.js:1181:9\n    at process._tickCallback (internal/process/next_tick.js:61:11)","name":"ValidationError","level":"error","timestamp":"2020-06-07T00:40:32.232Z"}
+{"level":"info","message":"Listening to port 3000...","timestamp":"2020-06-07T01:03:49.398Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly_tests...","timestamp":"2020-06-07T01:03:49.413Z"}
+{"level":"info","message":"Listening to port 3000...","timestamp":"2020-06-07T01:06:48.888Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly_tests...","timestamp":"2020-06-07T01:06:48.903Z"}
+{"level":"info","message":"Listening to port 3000...","timestamp":"2020-06-07T01:08:59.129Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly_tests...","timestamp":"2020-06-07T01:08:59.145Z"}
+{"level":"info","message":"Listening to port 3000...","timestamp":"2020-06-07T01:15:41.740Z"}
+{"level":"info","message":"Connected to mongodb://localhost/vidly_tests...","timestamp":"2020-06-07T01:15:41.755Z"}
