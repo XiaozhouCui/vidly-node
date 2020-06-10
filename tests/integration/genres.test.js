@@ -11,7 +11,7 @@ describe("/api/genres", () => {
     server = require("../../index");
   });
   afterEach(async () => {
-    server.close();
+    await server.close();
     // clean up all the inserted documents in database
     await Genre.remove({});
   });

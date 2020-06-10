@@ -9,7 +9,7 @@ require("./startup/routes")(app);
 // call db connection function
 require("./startup/db")();
 // call config function
-require("./startup/config")(app);
+// require("./startup/config")(app);
 // call validation function
 require("./startup/validation")();
 // call miscelaneous function

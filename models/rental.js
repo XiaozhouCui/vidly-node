@@ -6,6 +6,7 @@ const Rental = mongoose.model(
   mongoose.Schema({
     customer: {
       // not referring customer schema: because we don't need all the properties in customers schema.
+      // new subdocument
       type: new mongoose.Schema({
         name: {
           type: String,
