@@ -28,7 +28,8 @@ const userSchema = new mongoose.Schema({
   // operations: ['deleteGenres', 'createGenres'],
 });
 
-// Schema.methods returns an object, it allows us to add a method to a schema
+// Information Expert Principle
+// Schema.methods returns an object, it allows us to add methods to a schema object (not Schema Class)
 userSchema.methods.generateAuthToken = function () {
   // sign the jwt with user._id as payload, and an envirnoment variable as private key
   // no arrow function, "this" refers to the user instance generated from this Schema
