@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --verbose --maxWorkers=1 --coverage"
+    "test": "jest --watchAll --verbose --maxWorkers=1 --coverage",
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "10.16.0"
   },
   "jest": {
     "testEnvironment": "node"
@@ -15,6 +19,7 @@
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "bcrypt": "^4.0.1",
+    "compression": "^1.7.4",
     "config": "^3.3.1",
     "debug": "^4.1.1",
     "express": "^4.17.1",

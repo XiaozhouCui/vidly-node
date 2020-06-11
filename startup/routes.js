@@ -1,5 +1,4 @@
 const express = require("express");
-const helmet = require("helmet");
 const genres = require("../routes/genres");
 const customers = require("../routes/customers");
 const movies = require("../routes/movies");
@@ -17,8 +16,6 @@ module.exports = function (app) {
   app.use(express.urlencoded({ extended: true }));
   // built-in middleware: give access to static assets from url (e.g. localhost:3000/readme.txt)
   app.use(express.static("public"));
-  // 3rd party middleware: helmet to help set some HTTP response headers
-  app.use(helmet());
   // route handlers start here
   app.use("/api/genres", genres);
   app.use("/api/customers", customers);

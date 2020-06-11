@@ -9,11 +9,13 @@ require("./startup/routes")(app);
 // call db connection function
 require("./startup/db")();
 // call config function
-// require("./startup/config")(app);
+require("./startup/config")(app);
 // call validation function
 require("./startup/validation")();
 // call miscelaneous function
 require("./startup/misc")(app);
+// middleware for production environment
+require("./startup/prod")(app);
 
 // throw new Error("Something failed suring startup.");
 // const p = Promise.reject(new Error("Something failed miserably!"));
