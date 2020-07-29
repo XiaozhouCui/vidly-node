@@ -4,6 +4,8 @@ const app = express();
 
 // logging error first, in case other processes fail
 require("./startup/logging")();
+// allow CORS to add "Access-Control-Allow-Origin" in response header
+require("./startup/cors")(app);
 // call route handlers and middlewares
 require("./startup/routes")(app);
 // call db connection function
@@ -24,7 +26,7 @@ require("./startup/prod")(app);
 app.set("view engine", "pug");
 app.set("views", "./views"); // default
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3900;
 const server = app.listen(port, () =>
   winston.info(`Listening to port ${port}...`)
 );
