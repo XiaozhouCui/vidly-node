@@ -63,6 +63,7 @@ router.put("/:id", auth, async (req, res) => {
   res.send(movie);
 });
 
+// admin middleware must follow auth middleware, not the other way round
 router.delete("/:id", [auth, admin], async (req, res) => {
   const movie = await Movie.findByIdAndRemove(req.params.id);
   if (!movie)
